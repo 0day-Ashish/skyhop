@@ -1,0 +1,222 @@
+{
+  "site": {
+    "name": "Skyhop",
+    "version": "0.8.0",
+    "url": "https://skyhop.example",
+    "repo": "https://github.com/arya232006/skyhop",
+    "issues": "https://github.com/arya232006/skyhop/issues",
+    "contact": "https://github.com/arya232006/skyhop/issues",
+    "title": "Skyhop: hand your Claude Code session to the cloud, and get it back",
+    "description": "Skyhop is a plugin for Claude Code. Type /skyhop and your running session moves to the cloud with its code and full history. Carry on from claude.ai/code or the Claude app, and it comes home as the same session."
+  },
+
+  "nav": [
+    { "label": "How it works", "href": "#how-it-works" },
+    { "label": "Safety", "href": "#safety" },
+    { "label": "FAQ", "href": "#faq" }
+  ],
+
+  "hero": {
+    "headline": "Leave the desk, not the task.",
+    "headlineOptions": [
+      "Close your laptop. Your Claude Code session keeps going.",
+      "Hand your Claude Code session to the cloud, and get it back.",
+      "Leave the desk, not the task."
+    ],
+    "subhead": "Skyhop is a plugin for Claude Code. Type /skyhop and your running session moves to the cloud with its code and full history. Carry on from claude.ai/code or the Claude app, and it comes home as the same session.",
+    "primaryCta": "Install",
+    "secondaryCta": "View on GitHub",
+    "beats": ["Hand off with /skyhop", "Carry on from your phone", "Come home in /resume"]
+  },
+
+  "install": {
+    "label": "Paste into Claude Code",
+    "commands": ["/plugin marketplace add arya232006/skyhop", "/plugin install skyhop@skyhop"],
+    "smallPrint": "Free and MIT-licensed. Needs Node.js 20 or later, git, and a Claude plan with cloud sessions. Built for macOS."
+  },
+
+  "problem": {
+    "heading": "Claude Code can't push a running session to the cloud",
+    "windowTitle": "Built-in options",
+    "columns": ["Option", "What it does", "Why it isn't enough"],
+    "rows": [
+      ["claude --teleport", "Pulls a cloud session down to your terminal", "Only goes one way"],
+      ["claude --cloud", "Starts a new cloud session", "Doesn't carry over your conversation"],
+      ["Remote Control", "Lets you steer a local session from your phone", "Your computer has to stay on"],
+      ["Desktop app Open in > Cloud", "Sends a session to the cloud", "Carries the conversation as a summary, and needs manual clicks"]
+    ],
+    "leadStrong": "So if you shut your laptop mid-task,",
+    "leadRest": "the cloud starts without what you and Claude have done so far.",
+    "listLabel": "Skyhop fixes",
+    "list": ["The same session, not a summary", "One command to leave", "None to come back", "Your repository left alone"]
+  },
+
+  "how": {
+    "heading": "One command to leave, none to come back",
+    "steps": [
+      {
+        "title": "Hand off.",
+        "body": "Type /skyhop. Skyhop shows the plan, with the branch, what will be uploaded and the permission mode, and asks before anything leaves your machine."
+      },
+      {
+        "title": "Carry on anywhere.",
+        "body": "The cloud chat opens with a recap of where you left off and your last messages, word for word. Reply from claude.ai/code or the Claude app on your phone."
+      },
+      {
+        "title": "Come home.",
+        "body": "Quit the window, open claude in the same repository, pick the session in /resume and send a message. The cloud's messages are in it, and the cloud's code is in your files."
+      }
+    ],
+    "after": "Hand off again later, and it goes back to the same cloud chat.",
+    "diagram": {
+      "lanes": ["Your Mac", "GitHub", "Cloud session"],
+      "key": "Key goes straight to the cloud chat's first message, never through GitHub",
+      "handoff": { "title": "1. Type /skyhop", "sub": "see the plan, confirm" },
+      "run": { "title": "skyhop-run branch", "sub": "code + encrypted transcript" },
+      "resumed": { "title": "Session resumed", "sub": "the real conversation" },
+      "carry": { "title": "2. Carry on anywhere", "sub": "reply from claude.ai/code or the Claude app" },
+      "sync": { "title": "skyhop-sync branches", "sub": "code + encrypted messages" },
+      "everyReply": "after every reply",
+      "home": { "title": "3. Come home", "sub": "open claude, /resume, send a message" },
+      "same": { "title": "The same session", "sub": "cloud messages inside, cloud code in your files" }
+    }
+  },
+
+  "goesAlong": {
+    "heading": "Everything you need goes along",
+    "windowTitle": "What moves, and what doesn't",
+    "goes": {
+      "title": "Goes to the cloud",
+      "items": [
+        "Your code, on a skyhop branch",
+        "The full conversation, encrypted",
+        "Claude's memory notes for the project",
+        "Your last 15 or so messages, quoted in the cloud chat",
+        "A link to the whole conversation, if Remote Control is on"
+      ]
+    },
+    "stays": {
+      "title": "Stays on your machine",
+      "items": [
+        "Gitignored and .env-style files",
+        "Local services and databases",
+        "MCP servers set up only on your machine",
+        "Running processes",
+        "Local environment variables and credentials"
+      ]
+    },
+    "leadStrong": "Code, the full conversation, and Claude's memory notes",
+    "leadRest": "go along, so nobody is surprised in the cloud.",
+    "listLabel": "Goes along",
+    "list": ["Code on a skyhop branch", "Encrypted conversation", "Project memory notes"]
+  },
+
+  "modes": {
+    "heading": "Two ways to hand off",
+    "windowTitle": "Modes",
+    "columns": ["", "Full resume", "Summary"],
+    "commands": ["/skyhop", "/skyhop --summary"],
+    "defaultBadge": "Default",
+    "rows": [
+      ["Conversation", "The real session, resumed in the cloud", "A brief written by Claude, plus recent turns"],
+      ["Chat", "A progress line about every 100 seconds", "Live tool activity"],
+      ["Coming home", "The same session, in /resume", "A separate copy, with claude --teleport"],
+      ["Usage", "Each reply is generated twice", "Normal"]
+    ],
+    "leadStrong": "Full resume is the default.",
+    "leadRest": "Pick summary when you want live tool activity and normal usage instead.",
+    "listLabel": "Commands",
+    "list": ["/skyhop", "/skyhop --summary"]
+  },
+
+  "safety": {
+    "heading": "Built to leave your repository alone",
+    "cards": [
+      { "title": "Your checkout stays as it was.", "body": "Your branch, working tree and index are unchanged.", "chips": ["branch", "working tree", "index"] },
+      { "title": "Nothing is force-pushed.", "body": "Skyhop only creates its own skyhop branches.", "chips": ["skyhop-run", "skyhop-sync"] },
+      { "title": "Secrets stop the handoff.", "body": "If the scan finds a likely secret, nothing leaves your machine.", "chips": ["scan", "stop"] },
+      { "title": "Your conversation is encrypted on GitHub.", "body": "AES-256-GCM, and the key is never pushed.", "chips": ["AES-256-GCM"] },
+      { "title": "You confirm first.", "body": "You see the branch, remote, changes and upload before anything is sent.", "chips": ["branch", "remote", "changes", "upload"] },
+      { "title": "Coming home never overwrites.", "body": "If your files changed, the cloud's code waits on its own branch.", "chips": ["your files", "skyhop branch"] }
+    ],
+    "footnote": "The secret scan matches known patterns, so it can miss things."
+  },
+
+  "commands": {
+    "heading": "Commands",
+    "columns": ["Command", "What it does"],
+    "rows": [
+      ["/skyhop", "Move this session to the cloud, with its full history"],
+      ["/skyhop --summary", "Start a new cloud session from a brief instead"],
+      ["/skyhop --dry-run", "Show the plan and do nothing else"],
+      ["/skyhop-back", "Bring the session home right away, from another window"],
+      ["/skyhop-status", "List cloud sessions, past handoffs and leftover branches"]
+    ]
+  },
+
+  "faq": {
+    "heading": "Questions",
+    "items": [
+      {
+        "id": "whole-conversation",
+        "q": "Does the cloud chat show my whole conversation?",
+        "a": "It shows a recap and your last 15 or so messages. The cloud session itself has the full history. Turn on Remote Control before handing off to get a link to the whole conversation."
+      },
+      {
+        "id": "live-activity",
+        "q": "Will I see Claude's tool activity live?",
+        "a": "No. You get a progress line about every 100 seconds, then the reply with a list of the steps it took."
+      },
+      {
+        "id": "plan-usage",
+        "q": "Does it use more of my plan?",
+        "a": "Yes. Each reply is generated twice, once by your session and once by the chat, which runs on Haiku to keep it cheap. Long sessions use more on every message."
+      },
+      {
+        "id": "code-encrypted",
+        "q": "Is my code encrypted?",
+        "a": "Your conversation and memory notes are. Your code isn't, so on a public repository the skyhop code branches are public too."
+      },
+      {
+        "id": "typed-locally",
+        "q": "What if I typed on my laptop while the cloud kept going?",
+        "a": "The cloud part becomes a separate session, and yours stays as it was."
+      },
+      { "id": "message-length", "q": "How long can one message run?", "a": "Up to six hours." },
+      {
+        "id": "systems",
+        "q": "Which systems does it run on?",
+        "a": "macOS. The tests pass on Linux, but a real handoff from Linux hasn't been tried yet. Windows isn't supported."
+      },
+      { "id": "anthropic", "q": "Is Skyhop made by Anthropic?", "a": "No. It's an independent plugin for Claude Code." }
+    ]
+  },
+
+  "cta": {
+    "heading": "Try it on your next long task",
+    "github": "View on GitHub"
+  },
+
+  "footer": {
+    "columns": [
+      {
+        "title": "Product",
+        "links": [
+          { "label": "How it works", "href": "#how-it-works" },
+          { "label": "Safety", "href": "#safety" },
+          { "label": "Commands", "href": "#commands" },
+          { "label": "FAQ", "href": "#faq" }
+        ]
+      },
+      {
+        "title": "Project",
+        "links": [
+          { "label": "GitHub", "href": "https://github.com/arya232006/skyhop", "github": true },
+          { "label": "Report a problem", "href": "https://github.com/arya232006/skyhop/issues", "github": true },
+          { "label": "MIT licence", "href": "https://github.com/arya232006/skyhop/blob/main/LICENSE", "github": true }
+        ]
+      }
+    ],
+    "disclaimer": "Skyhop is an independent project, not made or endorsed by Anthropic. Claude and Claude Code are trademarks of Anthropic, PBC."
+  }
+}
