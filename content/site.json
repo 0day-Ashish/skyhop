@@ -27,7 +27,7 @@
     "primaryCta": "Install",
     "secondaryCta": "View on GitHub",
     "beats": ["Hand off with /skyhop", "Carry on from your phone", "Come home in /resume"],
-    "platforms": "For Claude Code on macOS and Windows."
+    "platforms": "Works on macOS and Windows."
   },
 
   "install": {

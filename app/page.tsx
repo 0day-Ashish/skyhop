@@ -251,6 +251,7 @@ export default function Home() {
         >
           <div className="lg:max-w-[460px]">
             <h1 className="display text-[44px] text-fg sm:text-[64px]">{hero.headline}</h1>
+            <p className="mt-6 max-w-[30rem] text-lg leading-7 text-muted">{hero.subhead}</p>
             <div className="mt-8 flex flex-wrap gap-3">
               <a href="#install" className={pillDark}>
                 {hero.primaryCta}

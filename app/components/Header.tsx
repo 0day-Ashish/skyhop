@@ -30,6 +30,7 @@ export function Header({ name, repo, contact }: Props) {
       <div className="mx-auto flex h-16 max-w-[1448px] items-center gap-5 px-4 sm:px-6">
         <a href="#top" className="flex items-center gap-2 text-fg" aria-label={`${name} home`}>
           <SkyhopMark className="size-8" />
+          <span className="text-[17px] font-semibold tracking-[-0.02em]">{name}</span>
         </a>
         <GithubLink
           where="header-contact"
