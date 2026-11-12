@@ -1,7 +1,7 @@
 {
   "site": {
     "name": "Skyhop",
-    "version": "0.8.0",
+    "version": "0.11.4",
     "url": "https://skyhop.example",
     "repo": "https://github.com/arya232006/skyhop",
     "issues": "https://github.com/arya232006/skyhop/issues",
@@ -32,7 +32,7 @@
   "install": {
     "label": "Paste into Claude Code",
     "commands": ["/plugin marketplace add arya232006/skyhop", "/plugin install skyhop@skyhop"],
-    "smallPrint": "Free and MIT-licensed. Needs Node.js 20 or later, git, and a Claude plan with cloud sessions. Built for macOS."
+    "smallPrint": "Free and MIT-licensed. Needs Node.js 20 or later, git, and a Claude plan with cloud sessions. Works on macOS and Windows."
   },
 
   "problem": {
@@ -60,16 +60,16 @@
       },
       {
         "title": "Carry on anywhere.",
-        "body": "The cloud chat opens with a recap of where you left off and your last messages, word for word. Reply from claude.ai/code or the Claude app on your phone."
+        "body": "The cloud chat opens with your last 50 exchanges as real messages, word for word, and carries on from there. Reply from claude.ai/code or the Claude app on your phone."
       },
       {
         "title": "Come home.",
         "body": "Quit the window, open claude in the same repository, pick the session in /resume and send a message. The cloud's messages are in it, and the cloud's code is in your files."
       }
     ],
-    "after": "Hand off again later, and it goes back to the same cloud chat.",
+    "after": "Hand off again later, even a day later, and it goes back to the same cloud chat.",
     "diagram": {
-      "lanes": ["Your Mac", "GitHub", "Cloud session"],
+      "lanes": ["Your computer", "GitHub", "Cloud session"],
       "key": "Key goes straight to the cloud chat's first message, never through GitHub",
       "handoff": { "title": "1. Type /skyhop", "sub": "see the plan, confirm" },
       "run": { "title": "skyhop-run branch", "sub": "code + encrypted transcript" },
@@ -91,7 +91,7 @@
         "Your code, on a skyhop branch",
         "The full conversation, encrypted",
         "Claude's memory notes for the project",
-        "Your last 15 or so messages, quoted in the cloud chat",
+        "Your last 50 exchanges, as real messages in the cloud chat",
         "A link to the whole conversation, if Remote Control is on"
       ]
     },
@@ -119,12 +119,12 @@
     "defaultBadge": "Default",
     "rows": [
       ["Conversation", "The real session, resumed in the cloud", "A brief written by Claude, plus recent turns"],
-      ["Chat", "A progress line about every 100 seconds", "Live tool activity"],
+      ["Chat", "Your earlier messages as real messages, then a progress line about every 100 seconds", "Live tool activity"],
       ["Coming home", "The same session, in /resume", "A separate copy, with claude --teleport"],
-      ["Usage", "Each reply is generated twice", "Normal"]
+      ["Usage", "Normal. Replies are shown as written, not generated twice", "Normal"]
     ],
     "leadStrong": "Full resume is the default.",
-    "leadRest": "Pick summary when you want live tool activity and normal usage instead.",
+    "leadRest": "Pick summary when you'd rather watch live tool activity.",
     "listLabel": "Commands",
     "list": ["/skyhop", "/skyhop --summary"]
   },
@@ -149,8 +149,11 @@
       ["/skyhop", "Move this session to the cloud, with its full history"],
       ["/skyhop --summary", "Start a new cloud session from a brief instead"],
       ["/skyhop --dry-run", "Show the plan and do nothing else"],
+      ["/skyhop --history 20", "Show 20 earlier exchanges in the cloud chat (default 50, or off)"],
+      ["/skyhop --new-chat", "Use a new cloud chat instead of this session's earlier one"],
       ["/skyhop-back", "Bring the session home right away, from another window"],
-      ["/skyhop-status", "List cloud sessions, past handoffs and leftover branches"]
+      ["/skyhop-status", "List cloud sessions, past handoffs and leftover branches"],
+      ["/skyhop-status --clean", "Remove leftover branches that hold nothing you'd lose"]
     ]
   },
 
@@ -160,7 +163,7 @@
       {
         "id": "whole-conversation",
         "q": "Does the cloud chat show my whole conversation?",
-        "a": "It shows a recap and your last 15 or so messages. The cloud session itself has the full history. Turn on Remote Control before handing off to get a link to the whole conversation."
+        "a": "It shows your last 50 exchanges as real messages, and --history changes that, up to 200. The cloud session itself has the full history. Turn on Remote Control before handing off to also get a link to the whole conversation."
       },
       {
         "id": "live-activity",
@@ -170,7 +173,7 @@
       {
         "id": "plan-usage",
         "q": "Does it use more of my plan?",
-        "a": "Yes. Each reply is generated twice, once by your session and once by the chat, which runs on Haiku to keep it cheap. Long sessions use more on every message."
+        "a": "No, about the same as working locally. The cloud session's replies are shown as written, so nothing is generated twice. Only if the cloud chat can't get ready and falls back to a recap does the chat repeat each reply, on Haiku to keep it cheap."
       },
       {
         "id": "code-encrypted",
@@ -186,7 +189,12 @@
       {
         "id": "systems",
         "q": "Which systems does it run on?",
-        "a": "macOS. The tests pass on Linux, but a real handoff from Linux hasn't been tried yet. Windows isn't supported."
+        "a": "macOS and Windows. On Windows the project needs a GitHub remote, because Skyhop hands off through GitHub there. Linux hasn't been tested with a real handoff yet."
+      },
+      {
+        "id": "same-chat",
+        "q": "Can I go back to the same cloud chat later?",
+        "a": "Yes. Hand the session off again and it returns to its earlier chat, even a day later. Use /skyhop --new-chat to start a fresh one."
       },
       { "id": "anthropic", "q": "Is Skyhop made by Anthropic?", "a": "No. It's an independent plugin for Claude Code." }
     ]
