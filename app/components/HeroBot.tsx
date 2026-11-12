@@ -1,7 +1,8 @@
 /**
  * Hero visual, in the spot where vercel.com has its triangle: an original pixel-art
  * Skyhop creature (a little cloud) typing on a laptop. It hops while a comet runs the
- * arc from your Mac up to the cloud and back. SVG + CSS only; still with reduced motion.
+ * arc from your laptop up to the cloud and back. SVG + CSS only; still with reduced motion.
+ * Strokes and the laptop's pixels come from theme tokens, so it works in light and dark.
  */
 
 const BOT = "#ea6c34"; // bot orange
@@ -66,16 +67,16 @@ export function HeroBot() {
         />
 
         {/* laptop, left end */}
-        <g transform="translate(18 308)" stroke="#171717" strokeWidth="1.75" fill="none" strokeLinejoin="round">
+        <g transform="translate(18 308)" stroke="var(--ink)" strokeWidth="1.75" fill="none" strokeLinejoin="round">
           <rect x="6" y="2" width="32" height="21" rx="3" fill="var(--surface)" />
           <path d="M0 27h44" strokeLinecap="round" />
         </g>
         <text x="40" y="358" textAnchor="middle" className="fill-[var(--muted)] font-mono text-[11px]">
-          your mac
+          your laptop
         </text>
 
         {/* cloud, right end */}
-        <g transform="translate(398 306)" stroke="#171717" strokeWidth="1.75" fill="var(--surface)" strokeLinejoin="round">
+        <g transform="translate(398 306)" stroke="var(--ink)" strokeWidth="1.75" fill="var(--surface)" strokeLinejoin="round">
           <path d="M11 26h24a8 8 0 000-16 11 11 0 00-21-2 9 9 0 00-3 18z" />
         </g>
         <text x="420" y="358" textAnchor="middle" className="fill-[var(--muted)] font-mono text-[11px]">
@@ -98,13 +99,13 @@ export function HeroBot() {
               <rect className="bot-eye" {...px(15, 4, 1, 2)} fill="#0a0a0a" />
 
               {/* laptop lid (back faces us) */}
-              <rect {...px(5, 8, 13, 7)} fill="#171717" />
-              <rect {...px(5, 8, 13, 1)} fill="#2b2b2b" />
+              <rect {...px(5, 8, 13, 7)} fill="var(--lid)" />
+              <rect {...px(5, 8, 13, 1)} fill="var(--lid-edge)" />
               {LID_MARK.map(([c, r]) => (
                 <rect key={`m${c}`} {...px(c, r)} fill="#fafafa" />
               ))}
               {/* laptop base */}
-              <rect {...px(3, 15, 17, 1)} fill="#3a3a3a" />
+              <rect {...px(3, 15, 17, 1)} fill="var(--lid-base)" />
 
               {/* paws on the keys */}
               <rect className="paw paw-a" {...px(6, 8, 2, 2)} fill={BOT} />

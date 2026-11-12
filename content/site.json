@@ -26,12 +26,27 @@
     "subhead": "Skyhop is a plugin for Claude Code. Type /skyhop and your running session moves to the cloud with its code and full history. Carry on from claude.ai/code or the Claude app, and it comes home as the same session.",
     "primaryCta": "Install",
     "secondaryCta": "View on GitHub",
-    "beats": ["Hand off with /skyhop", "Carry on from your phone", "Come home in /resume"]
+    "beats": ["Hand off with /skyhop", "Carry on from your phone", "Come home in /resume"],
+    "platforms": "For Claude Code on macOS and Windows."
   },
 
   "install": {
-    "label": "Paste into Claude Code",
-    "commands": ["/plugin marketplace add arya232006/skyhop", "/plugin install skyhop@skyhop"],
+    "platforms": [
+      {
+        "id": "mac",
+        "name": "macOS",
+        "label": "Paste into Claude Code",
+        "commands": ["/plugin marketplace add arya232006/skyhop", "/plugin install skyhop@skyhop"],
+        "note": "Run them inside Claude Code. In Terminal, the same commands start with claude plugin instead."
+      },
+      {
+        "id": "windows",
+        "name": "Windows",
+        "label": "Paste into PowerShell",
+        "commands": ["claude plugin marketplace add arya232006/skyhop", "claude plugin install skyhop@skyhop"],
+        "note": "On Windows, Skyhop hands off through GitHub, so your project needs a GitHub remote with the Claude GitHub App."
+      }
+    ],
     "smallPrint": "Free and MIT-licensed. Needs Node.js 20 or later, git, and a Claude plan with cloud sessions. Works on macOS and Windows."
   },
 

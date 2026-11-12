@@ -8,6 +8,8 @@ type Props = {
   label: string;
   commands: string[];
   block: "hero" | "cta";
+  /** Which system's commands these are, for the copy event. */
+  platform?: string;
   className?: string;
 };
 
@@ -29,7 +31,7 @@ async function writeClipboard(text: string) {
   }
 }
 
-export function CopyBlock({ label, commands, block, className = "" }: Props) {
+export function CopyBlock({ label, commands, block, platform, className = "" }: Props) {
   const [copied, setCopied] = useState(false);
   const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
@@ -40,7 +42,7 @@ export function CopyBlock({ label, commands, block, className = "" }: Props) {
   async function onCopy() {
     const ok = await writeClipboard(commands.join("\n"));
     if (!ok) return;
-    track("install_copy", { block });
+    track("install_copy", platform ? { block, platform } : { block });
     setCopied(true);
     if (timer.current) clearTimeout(timer.current);
     timer.current = setTimeout(() => setCopied(false), 2000);
@@ -53,7 +55,7 @@ export function CopyBlock({ label, commands, block, className = "" }: Props) {
         <button
           type="button"
           onClick={onCopy}
-          className="inline-flex h-7 items-center gap-1.5 rounded-full px-2.5 text-[13px] font-medium text-fg transition-colors hover:bg-black/5"
+          className="inline-flex h-7 items-center gap-1.5 rounded-full px-2.5 text-[13px] font-medium text-fg transition-colors hover:bg-tint"
         >
           {copied ? <CheckIcon className="size-3.5" /> : <CopyIcon className="size-3.5" />}
           {copied ? "Copied" : "Copy"}

@@ -1,19 +1,20 @@
 import content from "@/content/site.json";
-import { CopyBlock } from "./components/CopyBlock";
 import { Faq } from "./components/Faq";
 import { Header } from "./components/Header";
 import { HeroBot } from "./components/HeroBot";
+import { InstallTabs } from "./components/InstallTabs";
 import { RoundTrip } from "./components/RoundTrip";
 import { GithubLink } from "./components/TrackedLink";
+import { WindowControls } from "./components/WindowControls";
 import { GithubIcon, MinusIcon, PlusIcon, SkyhopMark } from "./components/icons";
 
 const { site, hero, install, problem, how, goesAlong, modes, safety, commands, faq, cta, footer } = content;
 
 const container = "mx-auto w-full max-w-[1448px] px-4 sm:px-6";
 const pillDark =
-  "inline-flex h-10 items-center gap-2 rounded-full bg-fg px-3.5 text-base font-medium text-white transition-colors hover:bg-[#383838]";
+  "inline-flex h-10 items-center gap-2 rounded-full bg-fg px-3.5 text-base font-medium text-on-fg transition-colors hover:bg-fg-hover";
 const pillLight =
-  "inline-flex h-10 items-center gap-2 rounded-full bg-surface px-3.5 text-base font-medium text-fg shadow-[0_0_0_1px_var(--border)] transition-colors hover:bg-[#f2f2f2]";
+  "inline-flex h-10 items-center gap-2 rounded-full bg-surface px-3.5 text-base font-medium text-fg shadow-[0_0_0_1px_var(--border)] transition-colors hover:bg-surface-hover";
 
 /* ---------- building blocks ---------- */
 
@@ -27,11 +28,7 @@ function Window({ title, children }: { title: string; children: React.ReactNode 
             <path d="M4 6l4 4 4-4" />
           </svg>
         </span>
-        <span className="flex gap-1.5" aria-hidden="true">
-          <span className="size-2.5 rounded-full bg-[#ff5f57]" />
-          <span className="size-2.5 rounded-full bg-[#febc2e]" />
-          <span className="size-2.5 rounded-full bg-[#28c840]" />
-        </span>
+        <WindowControls />
       </div>
       {children}
     </div>
@@ -160,9 +157,9 @@ function BranchesVisual() {
   return (
     <svg viewBox="0 0 360 170" className="w-full max-w-[380px]" aria-hidden="true">
       <text x="20" y="40" className="fill-[var(--muted)] font-mono text-[12px]">your branch</text>
-      <path d="M20 60H340" stroke="#171717" strokeWidth="2" />
+      <path d="M20 60H340" stroke="var(--fg)" strokeWidth="2" />
       {[60, 140, 220, 300].map((x) => (
-        <circle key={x} cx={x} cy="60" r="7" fill="#171717" stroke="var(--bg)" strokeWidth="3" />
+        <circle key={x} cx={x} cy="60" r="7" fill="var(--fg)" stroke="var(--bg)" strokeWidth="3" />
       ))}
       <path d="M140 60C170 60 170 125 205 125H340" fill="none" stroke="var(--accent)" strokeWidth="2" strokeDasharray="5 5" />
       {[240, 310].map((x) => (
@@ -179,7 +176,7 @@ function ChecklistVisual({ items }: { items: string[] }) {
       <ul className="space-y-2.5">
         {items.map((i) => (
           <li key={i} className="flex items-center gap-2.5 font-mono text-[12px] text-fg">
-            <span className="flex size-4 items-center justify-center rounded-full bg-fg text-white">
+            <span className="flex size-4 items-center justify-center rounded-full bg-fg text-on-fg">
               <svg viewBox="0 0 16 16" className="size-2.5" fill="none" stroke="currentColor" strokeWidth="2.5">
                 <path d="M3.5 8.5l3 3 6-7" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
@@ -191,7 +188,7 @@ function ChecklistVisual({ items }: { items: string[] }) {
       </ul>
       <div className="mt-4 flex items-center justify-end gap-2 border-t border-line pt-3">
         <span className="rounded-full px-2.5 py-1 text-[12px] text-muted shadow-[0_0_0_1px_var(--border)]">Cancel</span>
-        <span className="rounded-full bg-fg px-2.5 py-1 text-[12px] font-medium text-white">Confirm</span>
+        <span className="rounded-full bg-fg px-2.5 py-1 text-[12px] font-medium text-on-fg">Confirm</span>
       </div>
     </div>
   );
@@ -225,7 +222,7 @@ function SafetyCard({
         ))}
       </div>
       {corner && (
-        <div aria-hidden="true" className="absolute bottom-0 right-0 size-28 bg-[linear-gradient(135deg,#e4e4e4_0%,#ffffff_49.5%,var(--accent)_50%)]" />
+        <div aria-hidden="true" className="absolute bottom-0 right-0 size-28 bg-[linear-gradient(135deg,var(--border-strong)_0%,var(--surface)_49.5%,var(--accent)_50%)]" />
       )}
       <h3 className="relative max-w-[20rem] text-xl leading-8 tracking-[-0.01em] text-fg">{card.title}</h3>
       <p className="relative mt-1 max-w-[18rem] text-sm leading-5 text-muted">{card.body}</p>
@@ -240,7 +237,7 @@ export default function Home() {
     <>
       <a
         href="#main"
-        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-fg focus:px-4 focus:py-2 focus:text-white"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-full focus:bg-fg focus:px-4 focus:py-2 focus:text-on-fg"
       >
         Skip to content
       </a>
@@ -263,6 +260,7 @@ export default function Home() {
                 {hero.secondaryCta}
               </GithubLink>
             </div>
+            <p className="mt-5 text-sm text-muted">{hero.platforms}</p>
           </div>
 
           <HeroBot />
@@ -281,7 +279,7 @@ export default function Home() {
         {/* Install band (sits where vercel.com has its logo strip) */}
         <section id="install" aria-label="Install" className={`${container} grid items-center gap-6 pb-6 lg:grid-cols-[1fr_minmax(0,520px)_1fr] lg:gap-x-8`}>
           <p className="max-w-[24rem] text-sm leading-6 text-muted lg:order-1">{install.smallPrint}</p>
-          <CopyBlock label={install.label} commands={install.commands} block="hero" className="lg:order-2" />
+          <InstallTabs platforms={install.platforms} block="hero" className="lg:order-2" />
           <p className="font-mono text-[13px] text-subtle lg:order-3 lg:justify-self-end">
             v{site.version} · MIT
           </p>
@@ -313,7 +311,7 @@ export default function Home() {
               <ol className="space-y-6">
                 {how.steps.map((s, i) => (
                   <li key={s.title} className="flex gap-3">
-                    <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-fg font-mono text-[12px] text-white">
+                    <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-fg font-mono text-[12px] text-on-fg">
                       {i + 1}
                     </span>
                     <p className="text-[15px] leading-6 text-muted">
@@ -396,7 +394,7 @@ export default function Home() {
                   <th scope="col" className="bg-accent-soft/60 px-5 py-3 align-top">
                     <span className="flex items-center gap-2 text-[15px] font-medium text-fg">
                       {modes.columns[1]}
-                      <span className="rounded-full bg-accent px-2 py-0.5 text-[11px] font-medium text-white">{modes.defaultBadge}</span>
+                      <span className="rounded-full bg-accent px-2 py-0.5 text-[11px] font-medium text-on-accent">{modes.defaultBadge}</span>
                     </span>
                     <span className="mt-0.5 block font-mono text-[12px] font-normal text-muted">{modes.commands[0]}</span>
                   </th>
@@ -423,7 +421,7 @@ export default function Home() {
                 <div key={c} className={`p-4 ${c === 1 ? "bg-accent-soft/60" : ""}`}>
                   <p className="flex items-center gap-2 text-[15px] font-medium text-fg">
                     {modes.columns[c]}
-                    {c === 1 && <span className="rounded-full bg-accent px-2 py-0.5 text-[11px] text-white">{modes.defaultBadge}</span>}
+                    {c === 1 && <span className="rounded-full bg-accent px-2 py-0.5 text-[11px] text-on-accent">{modes.defaultBadge}</span>}
                   </p>
                   <p className="font-mono text-[12px] text-muted">{modes.commands[c - 1]}</p>
                   <dl className="mt-3 space-y-2 text-sm">
@@ -503,7 +501,7 @@ export default function Home() {
           <h2 id="cta-h" className="display text-[40px] text-fg sm:text-[56px]">
             {cta.heading}
           </h2>
-          <CopyBlock label={install.label} commands={install.commands} block="cta" className="w-full max-w-[520px]" />
+          <InstallTabs platforms={install.platforms} block="cta" className="w-full max-w-[520px]" />
           <GithubLink where="cta" href={site.repo} className={pillLight}>
             <GithubIcon className="size-4" />
             {cta.github}

@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import { ThemeToggle } from "./ThemeToggle";
 import { GithubLink } from "./TrackedLink";
 import { GithubIcon, SkyhopMark } from "./icons";
 
@@ -33,24 +34,25 @@ export function Header({ name, repo, contact }: Props) {
         <GithubLink
           where="header-contact"
           href={contact}
-          className="inline-flex h-8 items-center rounded-full bg-surface px-3 text-sm font-medium text-fg shadow-[0_0_0_1px_var(--border)] transition-colors hover:bg-black/[0.03]"
+          className="inline-flex h-8 items-center rounded-full bg-surface px-3 text-sm font-medium text-fg shadow-[0_0_0_1px_var(--border)] transition-colors hover:bg-tint"
         >
           Contact
         </GithubLink>
 
         <div className="ml-auto flex items-center gap-2">
+          <ThemeToggle />
           <GithubLink
             where="header"
             href={repo}
             aria-label="GitHub"
-            className="inline-flex h-8 items-center gap-1.5 rounded-full bg-surface px-2.5 text-sm font-medium text-fg shadow-[0_0_0_1px_var(--border)] transition-colors hover:bg-black/3 sm:px-3"
+            className="inline-flex h-8 items-center gap-1.5 rounded-full bg-surface px-2.5 text-sm font-medium text-fg shadow-[0_0_0_1px_var(--border)] transition-colors hover:bg-tint sm:px-3"
           >
             <GithubIcon className="size-3.5" />
             <span className="hidden sm:inline">GitHub</span>
           </GithubLink>
           <a
             href="#install"
-            className="inline-flex h-8 items-center rounded-full bg-fg px-3 text-sm font-medium text-white transition-colors hover:bg-[#383838]"
+            className="inline-flex h-8 items-center rounded-full bg-fg px-3 text-sm font-medium text-on-fg transition-colors hover:bg-fg-hover"
           >
             Install
           </a>
