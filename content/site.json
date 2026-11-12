@@ -2,7 +2,7 @@
   "site": {
     "name": "Skyhop",
     "version": "0.11.4",
-    "url": "https://skyhop.example",
+    "url": "https://skyhop-silk.vercel.app",
     "repo": "https://github.com/skyhophq/skyhop",
     "issues": "https://github.com/skyhophq/skyhop/issues",
     "contact": "https://github.com/skyhophq/skyhop/issues",

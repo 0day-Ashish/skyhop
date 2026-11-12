@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://skyhop.example/sitemap.xml
+Sitemap: https://skyhop-silk.vercel.app/sitemap.xml
