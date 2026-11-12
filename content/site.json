@@ -3,9 +3,9 @@
     "name": "Skyhop",
     "version": "0.11.4",
     "url": "https://skyhop.example",
-    "repo": "https://github.com/arya232006/skyhop",
-    "issues": "https://github.com/arya232006/skyhop/issues",
-    "contact": "https://github.com/arya232006/skyhop/issues",
+    "repo": "https://github.com/skyhophq/skyhop",
+    "issues": "https://github.com/skyhophq/skyhop/issues",
+    "contact": "https://github.com/skyhophq/skyhop/issues",
     "title": "Skyhop: hand your Claude Code session to the cloud, and get it back",
     "description": "Skyhop is a plugin for Claude Code. Type /skyhop and your running session moves to the cloud with its code and full history. Carry on from claude.ai/code or the Claude app, and it comes home as the same session."
   },
@@ -36,14 +36,14 @@
         "id": "mac",
         "name": "macOS",
         "label": "Paste into Claude Code",
-        "commands": ["/plugin marketplace add arya232006/skyhop", "/plugin install skyhop@skyhop"],
+        "commands": ["/plugin marketplace add skyhophq/skyhop", "/plugin install skyhop@skyhop"],
         "note": "Run them inside Claude Code. In Terminal, the same commands start with claude plugin instead."
       },
       {
         "id": "windows",
         "name": "Windows",
         "label": "Paste into PowerShell",
-        "commands": ["claude plugin marketplace add arya232006/skyhop", "claude plugin install skyhop@skyhop"],
+        "commands": ["claude plugin marketplace add skyhophq/skyhop", "claude plugin install skyhop@skyhop"],
         "note": "On Windows, Skyhop hands off through GitHub, so your project needs a GitHub remote with the Claude GitHub App."
       }
     ],
@@ -234,9 +234,9 @@
       {
         "title": "Project",
         "links": [
-          { "label": "GitHub", "href": "https://github.com/arya232006/skyhop", "github": true },
-          { "label": "Report a problem", "href": "https://github.com/arya232006/skyhop/issues", "github": true },
-          { "label": "MIT licence", "href": "https://github.com/arya232006/skyhop/blob/main/LICENSE", "github": true }
+          { "label": "GitHub", "href": "https://github.com/skyhophq/skyhop", "github": true },
+          { "label": "Report a problem", "href": "https://github.com/skyhophq/skyhop/issues", "github": true },
+          { "label": "MIT licence", "href": "https://github.com/skyhophq/skyhop/blob/main/LICENSE", "github": true }
         ]
       }
     ],
