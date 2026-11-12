@@ -181,19 +181,9 @@
         "a": "It shows your last 50 exchanges as real messages, and --history changes that, up to 200. The cloud session itself has the full history. Turn on Remote Control before handing off to also get a link to the whole conversation."
       },
       {
-        "id": "live-activity",
-        "q": "Will I see Claude's tool activity live?",
-        "a": "No. You get a progress line about every 100 seconds, then the reply with a list of the steps it took."
-      },
-      {
         "id": "plan-usage",
         "q": "Does it use more of my plan?",
         "a": "No, about the same as working locally. The cloud session's replies are shown as written, so nothing is generated twice. Only if the cloud chat can't get ready and falls back to a recap does the chat repeat each reply, on Haiku to keep it cheap."
-      },
-      {
-        "id": "code-encrypted",
-        "q": "Is my code encrypted?",
-        "a": "Your conversation and memory notes are. Your code isn't, so on a public repository the skyhop code branches are public too."
       },
       {
         "id": "typed-locally",
