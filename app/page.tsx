@@ -11,8 +11,6 @@ import { GithubIcon, MinusIcon, PlusIcon, SkyhopMark } from "./components/icons"
 const { site, hero, install, problem, how, goesAlong, modes, safety, commands, faq, cta, footer } = content;
 
 const container = "mx-auto w-full max-w-[1448px] px-4 sm:px-6";
-const pillDark =
-  "inline-flex h-10 items-center gap-2 rounded-full bg-fg px-3.5 text-base font-medium text-on-fg transition-colors hover:bg-fg-hover";
 const pillLight =
   "inline-flex h-10 items-center gap-2 rounded-full bg-surface px-3.5 text-base font-medium text-fg shadow-[0_0_0_1px_var(--border)] transition-colors hover:bg-surface-hover";
 
@@ -253,9 +251,6 @@ export default function Home() {
             <h1 className="display text-[44px] text-fg sm:text-[64px]">{hero.headline}</h1>
             <p className="mt-6 max-w-[30rem] text-lg leading-7 text-muted">{hero.subhead}</p>
             <div className="mt-8 flex flex-wrap gap-3">
-              <a href="#install" className={pillDark}>
-                {hero.primaryCta}
-              </a>
               <GithubLink where="hero" href={site.repo} className={pillLight}>
                 <GithubIcon className="size-4" />
                 {hero.secondaryCta}

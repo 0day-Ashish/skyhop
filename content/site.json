@@ -24,7 +24,6 @@
       "Leave the desk, not the task."
     ],
     "subhead": "Skyhop is a plugin for Claude Code. Type /skyhop and your running session moves to the cloud with its code and full history. Carry on from claude.ai/code or the Claude app, and it comes home as the same session.",
-    "primaryCta": "Install",
     "secondaryCta": "View on GitHub",
     "beats": ["Hand off with /skyhop", "Carry on from your phone", "Come home in /resume"],
     "platforms": "Works on macOS and Windows · Public beta."

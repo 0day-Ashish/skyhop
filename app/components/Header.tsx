@@ -51,12 +51,6 @@ export function Header({ name, repo, contact }: Props) {
             <GithubIcon className="size-3.5" />
             <span className="hidden sm:inline">GitHub</span>
           </GithubLink>
-          <a
-            href="#install"
-            className="inline-flex h-8 items-center rounded-full bg-fg px-3 text-sm font-medium text-on-fg transition-colors hover:bg-fg-hover"
-          >
-            Install
-          </a>
         </div>
       </div>
     </header>
