@@ -275,7 +275,7 @@ export default function Home() {
         {/* Install band (sits where vercel.com has its logo strip) */}
         <section id="install" aria-label="Install" className={`${container} grid items-center gap-6 pb-6 lg:grid-cols-[1fr_minmax(0,520px)_1fr] lg:gap-x-8`}>
           <p className="max-w-[24rem] text-sm leading-6 text-muted lg:order-1">{install.smallPrint}</p>
-          <InstallTabs platforms={install.platforms} block="hero" className="lg:order-2" />
+          <InstallTabs platforms={install.platforms} github={install.github} block="hero" className="lg:order-2" />
           <p className="font-mono text-[13px] text-subtle lg:order-3 lg:justify-self-end">
             v{site.version} · MIT
           </p>
@@ -497,7 +497,7 @@ export default function Home() {
           <h2 id="cta-h" className="display text-[40px] text-fg sm:text-[56px]">
             {cta.heading}
           </h2>
-          <InstallTabs platforms={install.platforms} block="cta" className="w-full max-w-[520px]" />
+          <InstallTabs platforms={install.platforms} github={install.github} block="cta" className="w-full max-w-[520px]" />
           <GithubLink where="cta" href={site.repo} className={pillLight}>
             <GithubIcon className="size-4" />
             {cta.github}

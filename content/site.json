@@ -43,10 +43,15 @@
         "name": "Windows",
         "label": "Paste into PowerShell",
         "commands": ["claude plugin marketplace add skyhophq/skyhop", "claude plugin install skyhop@skyhop"],
-        "note": "On Windows, Skyhop hands off through GitHub, so your project needs a GitHub remote with the Claude GitHub App."
+        "note": "Run them in PowerShell. Inside Claude Code on Windows, /plugin opens a menu instead."
       }
     ],
-    "smallPrint": "Free and MIT-licensed. Needs Node.js 20 or later, git, and a Claude plan with cloud sessions. Works on macOS and Windows."
+    "github": {
+      "text": "Required on macOS and Windows: install the Claude GitHub App on the personal account or organization that owns your project's repository, and give it access to that repository. If an organization owns it, an owner of the organization has to install or approve the app.",
+      "link": "Install the Claude GitHub App",
+      "href": "https://github.com/apps/claude"
+    },
+    "smallPrint": "Free and MIT-licensed. Needs Node.js 20 or later, git, a Claude plan with cloud sessions, and the Claude GitHub App on the account or organization that owns your repository. Works on macOS and Windows."
   },
 
   "problem": {
@@ -193,7 +198,12 @@
       {
         "id": "systems",
         "q": "Which systems does it run on?",
-        "a": "macOS and Windows. On Windows the project needs a GitHub remote, because Skyhop hands off through GitHub there. Linux hasn't been tested with a real handoff yet."
+        "a": "macOS and Windows. Linux hasn't been tested with a real handoff yet."
+      },
+      {
+        "id": "github-app",
+        "q": "What do I need to set up on GitHub?",
+        "a": "Your project needs a GitHub repository as its remote, and the Claude GitHub App (github.com/apps/claude) installed on the personal account or organization that owns that repository, with access to it. If an organization owns it, an owner of the organization has to install or approve the app. Without it, the cloud session can't save its work, so nothing comes back to your computer, and the cloud chat starts from a recap instead of your conversation."
       },
       {
         "id": "same-chat",

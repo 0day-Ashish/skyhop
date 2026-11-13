@@ -3,18 +3,21 @@
 import { useState } from "react";
 import { usePlatform } from "@/lib/platform";
 import { CopyBlock } from "./CopyBlock";
+import { GithubLink } from "./TrackedLink";
 
 // id is "mac" or "windows", typed as string because it comes from content/site.json.
 type Steps = { id: string; name: string; label: string; commands: string[]; note: string };
+type GithubApp = { text: string; link: string; href: string };
 
 type Props = {
   platforms: Steps[];
+  github: GithubApp;
   block: "hero" | "cta";
   className?: string;
 };
 
 /** Install commands for macOS or Windows, starting on the visitor's own system. */
-export function InstallTabs({ platforms, block, className = "" }: Props) {
+export function InstallTabs({ platforms, github, block, className = "" }: Props) {
   const detected = usePlatform();
   const [picked, setPicked] = useState<string | null>(null);
   const active = platforms.find((p) => p.id === (picked ?? detected)) ?? platforms[0];
@@ -46,6 +49,16 @@ export function InstallTabs({ platforms, block, className = "" }: Props) {
         <CopyBlock label={active.label} commands={active.commands} block={block} platform={active.id} />
         <p className="mt-2 text-[13px] leading-5 text-muted">{active.note}</p>
       </div>
+      <p className="mt-3 rounded-xl bg-surface px-3 py-2.5 text-[13px] leading-5 text-fg shadow-[0_0_0_1px_var(--border)]">
+        {github.text}{" "}
+        <GithubLink
+          where={`${block}-github-app`}
+          href={github.href}
+          className="font-medium underline underline-offset-2 transition-colors hover:text-muted"
+        >
+          {github.link}
+        </GithubLink>
+      </p>
     </div>
   );
 }
